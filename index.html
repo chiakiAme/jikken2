@@ -46,15 +46,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 14px;
+      padding-bottom: 12px;
       border-bottom: 2px solid var(--border-stone);
       margin-bottom: 14px;
     }
     .logo-area { display: flex; align-items: center; gap: 14px; }
-    .rune-logo-svg { width: 48px; height: 48px; flex-shrink: 0; }
+    .rune-logo-svg { width: 46px; height: 46px; flex-shrink: 0; }
     .logo-title {
       margin: 0;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       color: var(--gold-light);
       font-weight: 900;
       letter-spacing: 1px;
@@ -68,7 +68,6 @@
       border: 1px solid #6366f1;
       font-size: 0.72rem;
       font-weight: 900;
-      letter-spacing: 0.5px;
     }
     .status-badge.review {
       background: #78350f;
@@ -76,10 +75,52 @@
       border-color: var(--gold);
     }
 
-    /* ダンジョン踏破ゲージ */
+    /* 上部レベル選択タブ（グリッド） */
+    .stage-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    @media (max-width: 500px) {
+      .stage-tabs {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .stage-btn {
+      padding: 8px 4px;
+      border: 2px solid var(--border-stone);
+      border-radius: 10px;
+      background: #090d16;
+      font-size: 0.72rem;
+      font-weight: 900;
+      color: var(--text-muted);
+      cursor: pointer;
+      box-shadow: 0 3px 0 #020617;
+      transition: all 0.15s ease;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .stage-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 #020617;
+    }
+    .stage-btn.active {
+      background: linear-gradient(180deg, #d97706, #92400e);
+      color: #ffffff;
+      border-color: var(--gold-light);
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+    }
+    .stage-btn.ex-tab.active {
+      background: linear-gradient(180deg, #7c3aed, #4c1d95);
+      border-color: #c084fc;
+      box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+    }
+
+    /* 進行度ゲージ */
     .dungeon-progress {
       margin-bottom: 16px;
-      padding: 12px 14px;
+      padding: 10px 14px;
       background: rgba(15, 23, 42, 0.85);
       border: 1px solid var(--border-stone);
       border-radius: 12px;
@@ -90,7 +131,7 @@
       background: #020617;
       border-radius: 999px;
       overflow: hidden;
-      margin-top: 8px;
+      margin-top: 6px;
       border: 1px solid #334155;
     }
     .progress-fill {
@@ -106,8 +147,8 @@
       background: var(--card-bg);
       border: 2px solid var(--border-stone);
       border-radius: 14px;
-      padding: 18px;
-      margin-bottom: 16px;
+      padding: 16px;
+      margin-bottom: 14px;
       box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
     }
     .floor-badge {
@@ -119,21 +160,21 @@
       font-size: 0.75rem;
       font-weight: 900;
       border: 1px solid #818cf8;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .story-text {
       margin: 0;
       font-size: 0.95rem;
-      line-height: 1.7;
+      line-height: 1.65;
       color: #e2e8f0;
     }
 
-    /* T勘定の天秤 (借方・貸方) */
+    /* 借方・貸方の天秤 */
     .split-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
     @media(max-width: 560px) { .split-container { grid-template-columns: 1fr; } }
     .side-column {
@@ -148,15 +189,14 @@
     }
     .side-title {
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       font-weight: 900;
       font-size: 0.85rem;
       color: #e2e8f0;
-      letter-spacing: 0.5px;
     }
     .entry-row { display: flex; gap: 6px; margin-bottom: 8px; }
     .entry-row input {
-      padding: 9px;
+      padding: 8px;
       background: #090d16;
       border: 1px solid #475569;
       border-radius: 8px;
@@ -181,7 +221,7 @@
     }
     .btn-add {
       width: 100%;
-      padding: 7px;
+      padding: 6px;
       background: rgba(15, 23, 42, 0.6);
       border: 1px dashed #6366f1;
       border-radius: 8px;
@@ -189,42 +229,39 @@
       font-size: 0.8rem;
       cursor: pointer;
       font-weight: bold;
-      transition: all 0.2s ease;
     }
     .credit .btn-add {
       border-color: #ef4444;
       color: #fecaca;
     }
-    .btn-add:hover { background: rgba(30, 41, 59, 0.9); }
 
-    /* 詠唱・判定ボタン */
+    /* 詠唱ボタン */
     .btn-submit {
       width: 100%;
-      padding: 15px;
+      padding: 14px;
       background: linear-gradient(180deg, #d97706, #b45309);
       color: #fff;
       border: 2px solid var(--gold-light);
       border-radius: 12px;
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 900;
       cursor: pointer;
-      box-shadow: 0 5px 0 #78350f, 0 0 15px rgba(245, 158, 11, 0.4);
+      box-shadow: 0 4px 0 #78350f, 0 0 12px rgba(245, 158, 11, 0.4);
       touch-action: manipulation;
-      letter-spacing: 1px;
     }
     .btn-submit:active {
-      transform: translateY(3px);
+      transform: translateY(2px);
       box-shadow: 0 2px 0 #78350f;
     }
 
-    /* 判定結果エリア */
+    /* 判定結果 */
     .result-box {
       display: none;
-      margin-top: 16px;
-      padding: 14px 16px;
+      margin-top: 14px;
+      padding: 14px;
       border-radius: 12px;
       font-size: 0.9rem;
-      line-height: 1.65;
+      line-height: 1.6;
     }
     .result-box.correct {
       background: rgba(6, 78, 59, 0.85);
@@ -239,7 +276,7 @@
     .nav-buttons { display: flex; gap: 10px; margin-top: 14px; }
     .nav-btn {
       flex: 1;
-      padding: 11px;
+      padding: 10px;
       background: #334155;
       color: #f8fafc;
       border: 1px solid #64748b;
@@ -247,21 +284,19 @@
       font-weight: bold;
       cursor: pointer;
     }
-    .nav-btn:hover { background: #475569; }
 
-    /* 迷宮踏破画面 */
-    .clear-card { display: none; text-align: center; padding: 26px 16px; }
+    /* 踏破画面 */
+    .clear-card { display: none; text-align: center; padding: 24px 16px; }
     .badge-complete {
       display: inline-block;
-      padding: 9px 20px;
+      padding: 8px 18px;
       background: linear-gradient(135deg, #d97706, #78350f);
       border: 2px solid var(--gold-light);
       border-radius: 999px;
       font-weight: 900;
       color: #fef08a;
-      font-size: 1.1rem;
-      margin-bottom: 14px;
-      box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+      margin-bottom: 12px;
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
     }
     .btn-review, .btn-restart {
       width: 100%;
@@ -270,7 +305,7 @@
       border-radius: 10px;
       font-weight: bold;
       cursor: pointer;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .btn-review {
       background: linear-gradient(180deg, #d97706, #92400e);
@@ -279,9 +314,9 @@
     }
     .btn-restart { background: #1e293b; color: #cbd5e1; }
 
-    /* 古文書JSON読み込み */
+    /* 古文書JSON */
     details {
-      margin-top: 22px;
+      margin-top: 20px;
       border-top: 1px dashed var(--border-stone);
       padding-top: 14px;
     }
@@ -294,7 +329,7 @@
     textarea {
       width: 100%;
       height: 90px;
-      margin-top: 10px;
+      margin-top: 8px;
       padding: 10px;
       background: #090d16;
       border: 1px solid var(--border-stone);
@@ -325,7 +360,6 @@
       text-decoration: underline;
     }
 
-    /* ダンジョン罠（トラップシェイク） */
     .shake-animation {
       animation: trapShake 0.45s cubic-bezier(.36,.07,.19,.97) both;
     }
@@ -335,8 +369,6 @@
       30%, 50%, 70% { transform: translate3d(-7px, 0, 0); }
       40%, 60% { transform: translate3d(7px, 0, 0); }
     }
-
-    /* 魔法陣・火の粉エフェクト */
     .rising-item {
       position: fixed;
       bottom: -30px;
@@ -360,11 +392,9 @@
 <div class="container" id="mainContainer">
   <div class="header">
     <div class="logo-area">
-      <!-- 錬金術・魔法陣ロゴ -->
       <svg class="rune-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <polygon points="50,5 93,25 93,75 50,95 7,75 7,25" fill="none" stroke="#f59e0b" stroke-width="4" />
         <circle cx="50" cy="50" r="32" fill="none" stroke="#06b6d4" stroke-width="3" stroke-dasharray="6,4" />
-        <!-- T字の魔導天秤 -->
         <line x1="28" y1="36" x2="72" y2="36" stroke="#f59e0b" stroke-width="5" stroke-linecap="round" />
         <line x1="50" y1="36" x2="50" y2="70" stroke="#f59e0b" stroke-width="5" stroke-linecap="round" />
         <circle cx="30" cy="44" r="4" fill="#06b6d4" />
@@ -372,15 +402,23 @@
       </svg>
       <div>
         <h1 class="logo-title">T勘定の迷宮</h1>
-        <div style="font-size:0.7rem; color:var(--text-muted);">〜 決算整理と天秤の試練 〜</div>
+        <div style="font-size:0.7rem; color:var(--text-muted);" id="sub-title">〜 決算整理と天秤の試練 〜</div>
       </div>
     </div>
     <span class="status-badge" id="status-tag">🛡️ 探索中</span>
   </div>
 
+  <!-- レベル選択タブ -->
+  <div class="stage-tabs">
+    <button type="button" class="stage-btn active" id="tab-0" onclick="switchStage(0)">Lv.1<br>迷宮表層</button>
+    <button type="button" class="stage-btn" id="tab-1" onclick="switchStage(1)">Lv.2<br>冥府深層</button>
+    <button type="button" class="stage-btn" id="tab-2" onclick="switchStage(2)">Lv.3<br>奈落領域</button>
+    <button type="button" class="stage-btn ex-tab" id="tab-3" onclick="switchStage(3)">Lv.EX<br>虚無神域</button>
+  </div>
+
   <div class="dungeon-progress">
     <div style="display:flex; justify-content:space-between; font-size:0.75rem; font-weight:bold;">
-      <span style="color:var(--gold-light);">🗝️ 迷宮の踏破深度</span>
+      <span style="color:var(--gold-light);" id="stage-badge-text">🗝️ Lv.1 迷宮表層：決算整理の試練</span>
       <span id="progress-text">第 1 階層</span>
     </div>
     <div class="progress-track">
@@ -388,7 +426,6 @@
     </div>
   </div>
 
-  <!-- 試練エリア -->
   <div id="quiz-area">
     <div class="card">
       <div class="floor-badge" id="q-number">第 1 層 // 守護巨兵の回廊</div>
@@ -417,89 +454,287 @@
     </div>
   </div>
 
-  <!-- 踏破画面 -->
   <div id="clear-area" class="clear-card">
-    <h2>🏰 迷宮の最深部を完全踏破！</h2>
+    <h2>🏰 階層の完全踏破を達成！</h2>
     <div id="complete-badge-area"></div>
     <p id="score-text" style="line-height:1.7; color:var(--text-muted);"></p>
     <div id="review-btn-area"></div>
-    <button type="button" class="btn-restart" onclick="startFreshQuiz()">迷宮の入口から再挑戦する 🗝️</button>
+    <button type="button" class="btn-restart" onclick="startFreshStage()">この階層の入口から再挑戦する 🗝️</button>
   </div>
 
-  <!-- 古文書JSON読み込み窓 -->
   <details>
-    <summary>📜 古代石碑の写本を読み込む (外部JSON)</summary>
-    <textarea id="json-input" placeholder="AIジェネレーターで作成した問題データ（[ ... ]）をここに貼り付けると、迷宮の構造を再構築できます"></textarea>
-    <button type="button" class="load-btn" onclick="loadCustomData()">🔮 迷宮を再構築する</button>
+    <summary>📜 古代石碑の写本を読み込む (JSON)</summary>
+    <textarea id="json-input" placeholder="AIが作成した問題データ（[ ... ]）を貼り付けると、現在選択中のレベルを上書きできます"></textarea>
+    <button type="button" class="load-btn" onclick="loadCustomData()">🔮 選択中の階層を再構築</button>
   </details>
 
-  <span class="reset-link" onclick="forceReset()">※ 封印が狂った時はここを押して迷宮を初期化</span>
+  <span class="reset-link" onclick="forceReset()">※ 封印が狂った時はここを押して全データを初期化</span>
 </div>
-  <script>
-const defaultDungeonData = [
+<script>
+const STAGES = [
   {
-    "story": "【第1階層：風化する古代ゴーレム】迷宮を守護する古代機甲兵（備品：取得原価 600,000G）が稼働から1年経過し風化した。耐用年数5年、残存価額ゼロの定額法で減価償却を行う。天秤の記帳法は『間接法』を用いよ。（減価償却費 120,000G / 減価償却累計額 120,000G）",
-    "debit": [{ "account": "減価償却費", "amount": 120000 }],
-    "credit": [{ "account": "減価償却累計額", "amount": 120000 }],
-    "explanation": "間接法では、備品の本体価値を直接減らすのではなく、資産の控除科目である「減価償却累計額（Accumulated Depreciation）」を貸方に計上します。"
+    title: "Lv.1 迷宮表層：決算整理の試練",
+    questions: [
+      {
+        "story": "【第1階層：風化する古代ゴーレム】迷宮を守護する古代機甲兵（備品：取得原価 600,000G）が稼働から1年経過し風化した。耐用年数5年、残存価額ゼロの定額法で減価償却を行う。天秤の記帳法は『間接法』を用いよ。（減価償却費 120,000G / 減価償却累計額 120,000G）",
+        "debit": [{ "account": "減価償却費", "amount": 120000 }],
+        "credit": [{ "account": "減価償却累計額", "amount": 120000 }],
+        "explanation": "間接法では、備品の本体価値を直接減らすのではなく、資産の控除科目である「減価償却累計額（Accumulated Depreciation）」を貸方に計上します。"
+      },
+      {
+        "story": "【第2階層：結界維持の前払封印】当期の10月1日、向こう1年分の迷宮結界維持費（支払保険料）120,000Gを金貨で支払い全額費用処理していた。年1回の決算日（3月31日）を迎え、未経過期間（6か月分：60,000G）を次期へ繰り延べる。（前払保険料）（支払保険料）",
+        "debit": [{ "account": "前払保険料", "amount": 60000 }],
+        "credit": [{ "account": "支払保険料", "amount": 60000 }],
+        "explanation": "当期の費用から未経過分を取り消すため貸方に「支払保険料」、将来役務を受ける権利として借方に資産の「前払保険料（Prepaid Insurance）」を計上します。"
+      },
+      {
+        "story": "【第3階層：魔導炉の未払エネルギー】迷宮を照らす魔導炉の稼働費（支払水道光熱費）のうち、当期末にあたる3月分 15,000Gが未払いである。当期の費用として見越し計上せよ。（支払水道光熱費）（未払水道光熱費）",
+        "debit": [{ "account": "支払水道光熱費", "amount": 15000 }],
+        "credit": [{ "account": "未払水道光熱費", "amount": 15000 }],
+        "explanation": "当期に消費したエネルギーを費用（借方）に算入し、後日支払う義務として貸方に負債の「未払水道光熱費（Accrued Expenses）」を計上します。"
+      },
+      {
+        "story": "【第4階層：封印の保管庫と前受金貨】当期の2月1日、向こう6か月分の宝物保管料（受取手数料）60,000Gを金貨で受け取り全額収益処理していた。決算日（3月31日）を迎え、次期に属する4か月分（40,000G）を繰り延べる。（受取手数料）（前受手数料）",
+        "debit": [{ "account": "受取手数料", "amount": 40000 }],
+        "credit": [{ "account": "前受手数料", "amount": 40000 }],
+        "explanation": "当期の収益から次期分を取り消すため借方に「受取手数料」、将来保管義務を果たす負債として貸方に「前受手数料（Unearned Revenue）」を計上します。"
+      },
+      {
+        "story": "【第5階層：未収の古代利息】期中に冒険者ギルドへ貸し付けた遠征資金の利息（受取利息）のうち、当期に属する未収分 25,000Gを見越し計上せよ。（未収利息）（受取利息）",
+        "debit": [{ "account": "未収利息", "amount": 25000 }],
+        "credit": [{ "account": "受取利息", "amount": 25000 }],
+        "explanation": "当期に発生した収益を貸方に計上し、後日利息を受け取る権利として借方に資産の「未収利息（Accrued Interest）」を計上します。"
+      },
+      {
+        "story": "【第6階層：闇商人への売掛債権】期末の売掛金残高 800,000Gに対して、過去の不履行率に基づき 2% の貸倒れを見積もる。なお、決算整理前の貸倒引当金残高は 0Gである（差額補充法）。（貸倒引当金繰入）（貸倒引当金）",
+        "debit": [{ "account": "貸倒引当金繰入", "amount": 16000 }],
+        "credit": [{ "account": "貸倒引当金", "amount": 16000 }],
+        "explanation": "800,000G × 2% = 16,000G。費用の「貸倒引当金繰入（Bad Debt Expense）」を借方に、資産の控除科目「貸倒引当金（Allowance for Doubtful Accounts）」を貸方に計上します。"
+      },
+      {
+        "story": "【第7階層：補充の天秤】期末の売掛金残高 1,000,000Gに対して 3% の貸倒引当金を設定する。なお、決算整理前の貸倒引当金残高が 10,000G残っている（差額補充法）。（貸倒引当金繰入）（貸倒引当金）",
+        "debit": [{ "account": "貸倒引当金繰入", "amount": 20000 }],
+        "credit": [{ "account": "貸倒引当金", "amount": 20000 }],
+        "explanation": "目標額（1,000,000 × 3% = 30,000G）と既存残高（10,000G）の差額である 20,000Gだけを補充計上します。"
+      },
+      {
+        "story": "【第8階層：神殿探査船の減価】深層探索用フロート船（車両運搬具：取得原価 1,200,000G）について、耐用年数6年、残存価額ゼロの定額法・間接法で減価償却を行う。（減価償却費 200,000G / 減価償却累計額 200,000G）",
+        "debit": [{ "account": "減価償却費", "amount": 200000 }],
+        "credit": [{ "account": "減価償却累計額", "amount": 200000 }],
+        "explanation": "1,200,000G ÷ 6年 = 200,000G。借方に費用の「減価償却費」、貸方に「減価償却累計額」を刻みます。"
+      },
+      {
+        "story": "【第9階層：回収不能の債権処理】前期から繰り越されていた売掛金 50,000Gが、取引先商会の破産により回収不能となった。なお、貸倒引当金の残高は 60,000G残っている。（貸倒引当金）（売掛金）",
+        "debit": [{ "account": "貸倒引当金", "amount": 50000 }],
+        "credit": [{ "account": "売掛金", "amount": 50000 }],
+        "explanation": "前期以前の売掛金が貸倒れた場合、引当金残高の範囲内であれば「貸倒引当金の取り崩し（借方）」で相殺し、売掛金を減少させます。"
+      },
+      {
+        "story": "【最深部：迷宮主の再振替仕訳】前期末に繰り延べていた「前払家賃 30,000G」について、新期首を迎えたため再振替仕訳（洗替）を行う。（支払家賃）（前払家賃）",
+        "debit": [{ "account": "支払家賃", "amount": 30000 }],
+        "credit": [{ "account": "前払家賃", "amount": 30000 }],
+        "explanation": "期首の再振替仕訳では、前期末の決算整理仕訳の逆仕訳を行います。借方に「支払家賃」を戻し、貸方に「前払家賃」を計上して当期の費用に算入します。"
+      }
+    ]
   },
   {
-    "story": "【第2階層：結界維持の前払封印】当期の10月1日、向こう1年分の迷宮結界維持費（支払保険料）120,000Gを金貨で支払い全額費用処理していた。年1回の決算日（3月31日）を迎え、未経過期間（6か月分：60,000G）を次期へ繰り延べる。（前払保険料）（支払保険料）",
-    "debit": [{ "account": "前払保険料", "amount": 60000 }],
-    "credit": [{ "account": "支払保険料", "amount": 60000 }],
-    "explanation": "当期の費用から未経過分を取り消すため貸方に「支払保険料」、将来役務を受ける権利として借方に資産の「前払保険料（Prepaid Insurance）」を計上します。"
+    title: "Lv.2 冥府深層：原価と税の試練",
+    questions: [
+      {
+        "story": "【深層 第1層：冥府の在庫棚卸】決算につき、売上原価を「仕入」勘定で算定する。期首商品棚卸高は 140,000G、期末商品棚卸高は 180,000Gである。まずは期首在庫を仕入に振り替えよ。（仕入）（繰越商品）",
+        "debit": [{ "account": "仕入", "amount": 140000 }],
+        "credit": [{ "account": "繰越商品", "amount": 140000 }],
+        "explanation": "「し・く・り・く・り・し」の第1段階。資産の「繰越商品」を減らし、当期の費用「仕入」に算入します。"
+      },
+      {
+        "story": "【深層 第2層：残されし秘薬の封印】期末に売れ残ったポーション（期末商品棚卸高 180,000G）を仕入から控除し、次期への繰越商品として資産計上せよ。（繰越商品）（仕入）",
+        "debit": [{ "account": "繰越商品", "amount": 180000 }],
+        "credit": [{ "account": "仕入", "amount": 180000 }],
+        "explanation": "「し・く・り・く・り・し」の第2段階。期末在庫分を費用の「仕入」から控除し、資産の「繰越商品」に計上します。"
+      },
+      {
+        "story": "【深層 第3層：魔印切手の保管庫】決算にあたり、期中に費用処理（通信費）していた魔導通信切手等のうち、未使用分 8,000Gが残っていたため資産に振り替える。（貯蔵品）（通信費）",
+        "debit": [{ "account": "貯蔵品", "amount": 8000 }],
+        "credit": [{ "account": "通信費", "amount": 8000 }],
+        "explanation": "未使用切手等は当期の費用（貸方）から取り消し、資産である「貯蔵品（Supplies）」として借方に計上します。"
+      },
+      {
+        "story": "【深層 第4層：幻影金庫の過不足】期中に発生し「現金過不足」として処理されていた金貨の不足額 5,000Gについて、決算日まで原因が判明しなかった。雑損として処理せよ。（雑損）（現金過不足）",
+        "debit": [{ "account": "雑損", "amount": 5000 }],
+        "credit": [{ "account": "現金過不足", "amount": 5000 }],
+        "explanation": "借方に残っていた現金過不足を貸方で消去し、原因不明の損失として「雑損（Miscellaneous Loss）」を借方に計上します。"
+      },
+      {
+        "story": "【深層 第5層：天の恵みの余剰金】期中に発生し「現金過不足」として処理されていた金貨の過剰額 12,000Gについて、決算日まで原因が不明のままであった。雑益として処理せよ。（現金過不足）（雑益）",
+        "debit": [{ "account": "現金過不足", "amount": 12000 }],
+        "credit": [{ "account": "雑益", "amount": 12000 }],
+        "explanation": "貸方に残っていた現金過不足を借方で消去し、原因不明の利益として「雑益（Miscellaneous Income）」を貸方に計上します。"
+      },
+      {
+        "story": "【深層 第6層：帝国国税の清算】決算にあたり、期中に受け取った仮受消費税 70,000Gと、支払った仮払消費税 45,000Gを相殺し、差額 25,000Gを未払消費税として計上する。（仮受消費税）（仮払消費税）（未払消費税）",
+        "debit": [{ "account": "仮受消費税", "amount": 70000 }],
+        "credit": [{ "account": "仮払消費税", "amount": 45000 }, { "account": "未払消費税", "amount": 25000 }],
+        "explanation": "負債の仮受消費税を借方で、資産の仮払消費税を貸方で相殺し、差額の納税義務を「未払消費税（負債）」に計上します。"
+      },
+      {
+        "story": "【深層 第7層：封じられた金庫の利息】前期末に未収計上していた「未収利息 18,000G」について、当期首にあたり再振替仕訳（洗替）を行う。（受取利息）（未収利息）",
+        "debit": [{ "account": "受取利息", "amount": 18000 }],
+        "credit": [{ "account": "未収利息", "amount": 18000 }],
+        "explanation": "未収収益の期首再振替仕訳です。前期末の逆仕訳を行い、貸方にあった収益を借方でリセットします。"
+      },
+      {
+        "story": "【深層 第8層：魔導通信の再振替】前期末に当期の費用として見越し計上していた「未払通信費 9,000G」について、当期首にあたり再振替仕訳（洗替）を行う。（未払通信費）（通信費）",
+        "debit": [{ "account": "未払通信費", "amount": 9000 }],
+        "credit": [{ "account": "通信費", "amount": 9000 }],
+        "explanation": "未払費用の期首再振替仕訳です。前期末の逆仕訳を行い、負債を消去して貸方に費用を立てます。"
+      },
+      {
+        "story": "【深層 第9層：崩壊した神殿の直接法】迷宮の祭壇（建物：取得原価 900,000G）について、当期分の減価償却費 90,000Gを計上する。『直接法』を用いて建物の帳簿価額から直接減額せよ。（減価償却費）（建物）",
+        "debit": [{ "account": "減価償却費", "amount": 90000 }],
+        "credit": [{ "account": "建物", "amount": 90000 }],
+        "explanation": "直接法では減価償却累計額を使わず、資産勘定である「建物」そのものを貸方に記入して直接価値を減らします。"
+      },
+      {
+        "story": "【冥府最深部：ギルド創設の誓約】迷宮の支配権を獲得した。資本金 1,000,000Gを出資し、半額 500,000Gを金貨（現金）、残額 500,000Gを当座預金に預け入れた。（現金）（当座預金）（資本金）",
+        "debit": [{ "account": "現金", "amount": 500000 }, { "account": "当座預金", "amount": 500000 }],
+        "credit": [{ "account": "資本金", "amount": 1000000 }],
+        "explanation": "現金 500,000Gと当座預金 500,000Gの増加を借方に計上し、純資産である「資本金」1,000,000Gの増加を貸方に記入する複合仕訳です。"
+      }
+    ]
   },
   {
-    "story": "【第3階層：魔導炉の未払エネルギー】迷宮を照らす魔導炉の稼働費（支払水道光熱費）のうち、当期末にあたる3月分 15,000Gが未払いである。当期の費用として見越し計上せよ。（支払水道光熱費）（未払水道光熱費）",
-    "debit": [{ "account": "支払水道光熱費", "amount": 15000 }],
-    "credit": [{ "account": "未払水道光熱費", "amount": 15000 }],
-    "explanation": "当期に消費したエネルギーを費用（借方）に算入し、後日支払う義務として貸方に負債の「未払水道光熱費（Accrued Expenses）」を計上します。"
+    title: "Lv.3 奈落領域：手形と債権の罠",
+    questions: [
+      {
+        "story": "【奈落 第1層：魔導手形の振出】ドワーフ鍛冶ギルドから防具（仕入）150,000Gを購入し、代金は約束手形を振り出して支払った。（仕入）（支払手形）",
+        "debit": [{ "account": "仕入", "amount": 150000 }],
+        "credit": [{ "account": "支払手形", "amount": 150000 }],
+        "explanation": "仕入（費用）を借方に計上し、支払義務である負債の「支払手形（Promissory Notes Payable）」を貸方に記入します。"
+      },
+      {
+        "story": "【奈落 第2層：受取手形の封印解除】販売時に受け取っていた約束手形 120,000Gの満期日が到来し、当座預金口座に入金された。（当座預金）（受取手形）",
+        "debit": [{ "account": "当座預金", "amount": 120000 }],
+        "credit": [{ "account": "受取手形", "amount": 120000 }],
+        "explanation": "手形代金の決済に伴い「当座預金（資産）」の増加を借方に、権利の消滅として「受取手形（資産）」の減少を貸方に記入します。"
+      },
+      {
+        "story": "【奈落 第3層：手形裏書の盟約】買掛金 80,000Gを支払うため、得意先から受け取っていた約束手形 80,000Gを裏書譲渡した。（買掛金）（受取手形）",
+        "debit": [{ "account": "買掛金", "amount": 80000 }],
+        "credit": [{ "account": "受取手形", "amount": 80000 }],
+        "explanation": "買掛金（負債）の消滅を借方に記入し、手持ちの手形を譲渡したため「受取手形（資産）」の減少を貸方に記入します。"
+      },
+      {
+        "story": "【奈落 第4層：銀行割引の生贄】約束手形 200,000Gを銀行で割り引き、手形売却損 6,000Gを差し引かれた残額 194,000Gが当座預金に入金された。（当座預金）（手形売却損）（受取手形）",
+        "debit": [{ "account": "当座預金", "amount": 194000 }, { "account": "手形売却損", "amount": 6000 }],
+        "credit": [{ "account": "受取手形", "amount": 200000 }],
+        "explanation": "割引料は費用の「手形売却損」で借方に計上し、入金額（当座預金）とともに額面満額の受取手形（貸方）を減少させます。"
+      },
+      {
+        "story": "【奈落 第5層：電子魔導債権の発生】調合素材 90,000Gを売り上げ、代金は電子記録債権の発生記録請求を行い受理された。（電子記録債権）（売上）",
+        "debit": [{ "account": "電子記録債権", "amount": 90000 }],
+        "credit": [{ "account": "売上", "amount": 90000 }],
+        "explanation": "収益の売上を貸方に計上し、電子記録された金銭債権である資産「電子記録債権」を借方に記入します。"
+      },
+      {
+        "story": "【奈落 第6層：電子魔導債務の決済】取引先に対する電子記録債務 60,000Gの支払期日が到来し、当座預金口座から引き落とされた。（電子記録債務）（当座預金）",
+        "debit": [{ "account": "電子記録債務", "amount": 60000 }],
+        "credit": [{ "account": "当座預金", "amount": 60000 }],
+        "explanation": "支払義務の消滅として負債の「電子記録債務」を借方に記入し、資産の当座預金減少を貸方に記入します。"
+      },
+      {
+        "story": "【奈落 第7層：当期債権の突然死】当期に売り上げた魔石の売掛金 35,000Gについて、取引先が破産し回収不能となった（当期発生債権）。（貸倒損失）（売掛金）",
+        "debit": [{ "account": "貸倒損失", "amount": 35000 }],
+        "credit": [{ "account": "売掛金", "amount": 35000 }],
+        "explanation": "当期に発生した売掛金が当期に貸倒れた場合、引当金は使えず全額を費用の「貸倒損失（Bad Debt Loss）」として処理します。"
+      },
+      {
+        "story": "【奈落 第8層：甦る過年度の金貨】前期に貸倒れとして処理していた売掛金のうち、20,000Gが金貨（現金）で回収された。（現金）（償却債権取立益）",
+        "debit": [{ "account": "現金", "amount": 20000 }],
+        "credit": [{ "account": "償却債権取立益", "amount": 20000 }],
+        "explanation": "過年度に処理済みの債権が回収できた場合、特別利益である収益の「償却債権取立益」を貸方に計上します。"
+      },
+      {
+        "story": "【奈落 第9層：手付金と手形複合】発掘機材（備品）500,000Gを購入。支払済みの前払金 50,000Gを充当し、200,000Gは約束手形を振り出し、残額 250,000Gは後日払い（未払金）とした。（備品）（前払金）（支払手形）（未払金）",
+        "debit": [{ "account": "備品", "amount": 500000 }],
+        "credit": [{ "account": "前払金", "amount": 50000 }, { "account": "支払手形", "amount": 200000 }, { "account": "未払金", "amount": 250000 }],
+        "explanation": "備品 500,000Gを借方に計上し、前払金 50,000G、支払手形 200,000G、未払金 250,000Gを貸方に刻む4行複合仕訳です。"
+      },
+      {
+        "story": "【奈落最深部：手形不渡りの闇】所持していた約束手形 100,000Gが不渡りとなった。請求諸費用 2,000Gを金貨で支払い、手形額面とともに不渡手形とした。（不渡手形）（受取手形）（現金）",
+        "debit": [{ "account": "不渡手形", "amount": 102000 }],
+        "credit": [{ "account": "受取手形", "amount": 100000 }, { "account": "現金", "amount": 2000 }],
+        "explanation": "手形代金と請求諸費用の合計額（102,000G）を資産の「不渡手形」として借方に計上し、受取手形と現金を貸方から減額します。"
+      }
+    ]
   },
   {
-    "story": "【第4階層：封印の保管庫と前受金貨】当期の2月1日、向こう6か月分の宝物保管料（受取手数料）60,000Gを金貨で受け取り全額収益処理していた。決算日（3月31日）を迎え、次期に属する4か月分（40,000G）を繰り延べる。（受取手数料）（前受手数料）",
-    "debit": [{ "account": "受取手数料", "amount": 40000 }],
-    "credit": [{ "account": "前受手数料", "amount": 40000 }],
-    "explanation": "当期の収益から次期分を取り消すため借方に「受取手数料」、将来保管義務を果たす負債として貸方に「前受手数料（Unearned Revenue）」を計上します。"
-  },
-  {
-    "story": "【第5階層：未収の古代利息】期中に冒険者ギルドへ貸し付けた遠征資金の利息（受取利息）のうち、当期に属する未収分 25,000Gを見越し計上せよ。（未収利息）（受取利息）",
-    "debit": [{ "account": "未収利息", "amount": 25000 }],
-    "credit": [{ "account": "受取利息", "amount": 25000 }],
-    "explanation": "当期に発生した収益を貸方に計上し、後日利息を受け取る権利として借方に資産の「未収利息（Accrued Interest）」を計上します。"
-  },
-  {
-    "story": "【第6階層：闇商人への売掛債権】期末の売掛金残高 800,000Gに対して、過去の不履行率に基づき 2% の貸倒れを見積もる。なお、決算整理前の貸倒引当金残高は 0Gである（差額補充法）。（貸倒引当金繰入）（貸倒引当金）",
-    "debit": [{ "account": "貸倒引当金繰入", "amount": 16000 }],
-    "credit": [{ "account": "貸倒引当金", "amount": 16000 }],
-    "explanation": "800,000G × 2% = 16,000G。費用の「貸倒引当金繰入（Bad Debt Expense）」を借方に、資産の控除科目「貸倒引当金（Allowance for Doubtful Accounts）」を貸方に計上します。"
-  },
-  {
-    "story": "【第7階層：補充の天秤】期末の売掛金残高 1,000,000Gに対して 3% の貸倒引当金を設定する。なお、決算整理前の貸倒引当金残高が 10,000G残っている（差額補充法）。（貸倒引当金繰入）（貸倒引当金）",
-    "debit": [{ "account": "貸倒引当金繰入", "amount": 20000 }],
-    "credit": [{ "account": "貸倒引当金", "amount": 20000 }],
-    "explanation": "目標額（1,000,000 × 3% = 30,000G）と既存残高（10,000G）の差額である 20,000Gだけを補充計上します。"
-  },
-  {
-    "story": "【第8階層：神殿探査船の減価】深層探索用フロート船（車両運搬具：取得原価 1,200,000G）について、耐用年数6年、残存価額ゼロの定額法・間接法で減価償却を行う。（減価償却費 200,000G / 減価償却累計額 200,000G）",
-    "debit": [{ "account": "減価償却費", "amount": 200000 }],
-    "credit": [{ "account": "減価償却累計額", "amount": 200000 }],
-    "explanation": "1,200,000G ÷ 6年 = 200,000G。借方に費用の「減価償却費」、貸方に「減価償却累計額」を刻みます。"
-  },
-  {
-    "story": "【第9階層：回収不能の債権処理】前期から繰り越されていた売掛金 50,000Gが、取引先商会の破産により回収不能となった。なお、貸倒引当金の残高は 60,000G残っている。（貸倒引当金）（売掛金）",
-    "debit": [{ "account": "貸倒引当金", "amount": 50000 }],
-    "credit": [{ "account": "売掛金", "amount": 50000 }],
-    "explanation": "前期以前の売掛金が貸倒れた場合、引当金残高の範囲内であれば「貸倒引当金の取り崩し（借方）」で相殺し、売掛金を減少させます。"
-  },
-  {
-    "story": "【最深部：迷宮主の再振替仕訳】前期末に繰り延べていた「前払家賃 30,000G」について、新期首を迎えたため再振替仕訳（洗替）を行う。（支払家賃）（前払家賃）",
-    "debit": [{ "account": "支払家賃", "amount": 30000 }],
-    "credit": [{ "account": "前払家賃", "amount": 30000 }],
-    "explanation": "期首の再振替仕訳では、前期末の決算整理仕訳の逆仕訳を行います。借方に「支払家賃」を戻し、貸方に「前払家賃」を計上して当期の費用に算入します。"
+    title: "Lv.EX 虚無神域：資本と固定資産の迷宮",
+    questions: [
+      {
+        "story": "【虚無 第1層：中間納税の義務】王都税務署に対し、当期分の法人税等の中間納付額 150,000Gを当座預金口座から納付した。（仮払法人税等）（当座預金）",
+        "debit": [{ "account": "仮払法人税等", "amount": 150000 }],
+        "credit": [{ "account": "当座預金", "amount": 150000 }],
+        "explanation": "税金の中間納付時は資産勘定の「仮払法人税等（Interim Corporate Taxes Paid）」を借方に計上し、当座預金の減少を貸方に記入します。"
+      },
+      {
+        "story": "【虚無 第2層：確定税額の清算】決算にあたり、当期の確定法人税等 380,000Gを計上する。中間納付済みの仮払法人税等 150,000Gを充当し、残額 230,000Gを未払法人税等とした。（法人税、住民税及び事業税）（仮払法人税等）（未払法人税等）",
+        "debit": [{ "account": "法人税、住民税及び事業税", "amount": 380000 }],
+        "credit": [{ "account": "仮払法人税等", "amount": 150000 }, { "account": "未払法人税等", "amount": 230000 }],
+        "explanation": "費用である「法人税、住民税及び事業税」全額を借方に計上し、仮払法人税等を貸方で相殺。残りの納付義務を負債の「未払法人税等」に計上します。"
+      },
+      {
+        "story": "【虚無 第3層：魔導探査車の売却（益）】使わなくなった探査車（車両運搬具：取得原価 800,000G、減価償却累計額 500,000G、間接法）を 360,000Gで売却し、代金は来月末払い（未収入金）とした。（減価償却累計額）（未収入金）（車両運搬具）（固定資産売却益）",
+        "debit": [{ "account": "減価償却累計額", "amount": 500000 }, { "account": "未収入金", "amount": 360000 }],
+        "credit": [{ "account": "車両運搬具", "amount": 800000 }, { "account": "固定資産売却益", "amount": 60000 }],
+        "explanation": "帳簿価額（800,000 - 500,000 = 300,000G）より高く売れたため、差額 60,000Gを収益の「固定資産売却益」として貸方に計上します。"
+      },
+      {
+        "story": "【虚無 第4層：神殿祭壇の売却（損）】古い祭壇（備品：取得原価 600,000G、減価償却累計額 450,000G、間接法）を 100,000Gで売却し、代金は金貨（現金）で受け取った。（減価償却累計額）（現金）（固定資産売却損）（備品）",
+        "debit": [{ "account": "減価償却累計額", "amount": 450000 }, { "account": "現金", "amount": 100000 }, { "account": "固定資産売却損", "amount": 50000 }],
+        "credit": [{ "account": "備品", "amount": 600000 }],
+        "explanation": "帳簿価額 150,000Gのものを 100,000Gで売ったため、差額 50,000Gを費用の「固定資産売却損」として借方に計上します。"
+      },
+      {
+        "story": "【虚無 第5層：魔導兵器の買替】旧式防衛機（備品：取得原価 400,000G、累計額 280,000G）を下取りに出し、新式防衛機（備品）700,000Gを購入した。下取り価格 150,000Gを差し引いた残額 550,000Gは小切手を振り出して支払った。（減価償却累計額）（備品）（当座預金）（固定資産売却益）",
+        "debit": [{ "account": "減価償却累計額", "amount": 280000 }, { "account": "備品", "amount": 700000 }],
+        "credit": [{ "account": "備品", "amount": 400000 }, { "account": "当座預金", "amount": 550000 }, { "account": "固定資産売却益", "amount": 30000 }],
+        "explanation": "旧備品の帳簿価額 120,000Gに対し下取り額が 150,000Gのため売却益 30,000Gが貸方に発生。新備品 700,000Gを借方に計上する複合仕訳です。"
+      },
+      {
+        "story": "【虚無 第6層：出張旅費の仮払】遠征調査に向かうギルド員に対し、旅費の概算額 40,000Gを金貨で手渡した。（仮払金）（現金）",
+        "debit": [{ "account": "仮払金", "amount": 40000 }],
+        "credit": [{ "account": "現金", "amount": 40000 }],
+        "explanation": "使途や金額が未確定の支出は資産勘定である「仮払金（Suspense Payments）」を借方に計上します。"
+      },
+      {
+        "story": "【虚無 第7層：旅費精算と残金の戻入】遠征調査員が帰還し、交通費および宿泊費（旅費交通費）34,000Gを使ったと報告された。仮払金 40,000Gと精算し、残額 6,000Gを金貨で回収した。（旅費交通費）（現金）（仮払金）",
+        "debit": [{ "account": "旅費交通費", "amount": 34000 }, { "account": "現金", "amount": 6000 }],
+        "credit": [{ "account": "仮払金", "amount": 40000 }],
+        "explanation": "旅費交通費（費用）34,000Gと返還現金 6,000Gを借方に計上し、仮払金 40,000G（貸方）を消去して精算完了とします。"
+      },
+      {
+        "story": "【虚無 第8層：出所不明の入金】ドワーフ銀行の普通預金口座に、送り主不明の 85,000Gが入金された。（普通預金）（仮受金）",
+        "debit": [{ "account": "普通預金", "amount": 85000 }],
+        "credit": [{ "account": "仮受金", "amount": 85000 }],
+        "explanation": "理由不明の入金があった場合、負債勘定の「仮受金（Suspense Receipts）」を貸方に計上して原因判明を待ちます。"
+      },
+      {
+        "story": "【虚無 第9層：不明入金の判明】先日受け入れた仮受金 85,000Gの内訳が判明した。60,000Gは売掛金の回収であり、残額 25,000Gは新規クエストの受注手付金（前受金）であった。（仮受金）（売掛金）（前受金）",
+        "debit": [{ "account": "仮受金", "amount": 85000 }],
+        "credit": [{ "account": "売掛金", "amount": 60000 }, { "account": "前受金", "amount": 25000 }],
+        "explanation": "仮受金 85,000Gを借方で消去し、売掛金の減少 60,000Gと手付金（前受金：負債）25,000Gをそれぞれ貸方に計上します。"
+      },
+      {
+        "story": "【虚無最深部：店舗契約の敷金差入】ダンジョン入口に補給基地を構えるため建物を賃借した。契約にあたり、敷金（差入保証金）200,000Gおよび当月分家賃（支払家賃）50,000Gを当座預金から支払った。（差入保証金）（支払家賃）（当座預金）",
+        "debit": [{ "account": "差入保証金", "amount": 200000 }, { "account": "支払家賃", "amount": 50000 }],
+        "credit": [{ "account": "当座預金", "amount": 250000 }],
+        "explanation": "退去時に返還される敷金は資産の「差入保証金（Security Deposits）」200,000G、当月家賃は費用の「支払家賃」50,000Gとして借方に計上します。"
+      }
+    ]
   }
 ];
-let baseQuestions = defaultDungeonData;
-let currentQuestions = defaultDungeonData;
+let currentStageIndex = 0;
+let currentQuestions = [];
 let currentIndex = 0;
 let correctCount = 0;
 let wrongList = [];
@@ -507,41 +742,54 @@ let answeredSet = new Set();
 let isReviewMode = false;
 
 function init() {
-  try {
-    const saved = localStorage.getItem("t_labyrinth_custom_data");
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      if (Array.isArray(parsed) && parsed.length > 0) baseQuestions = parsed;
+  const savedStage = localStorage.getItem("t_labyrinth_current_stage");
+  currentStageIndex = savedStage ? parseInt(savedStage, 10) : 0;
+  if (currentStageIndex < 0 || currentStageIndex >= STAGES.length) currentStageIndex = 0;
+
+  loadStage(currentStageIndex);
+}
+
+function switchStage(stageIdx) {
+  if (stageIdx === currentStageIndex && !isReviewMode) return;
+  loadStage(stageIdx);
+}
+
+function loadStage(stageIdx) {
+  currentStageIndex = stageIdx;
+  localStorage.setItem("t_labyrinth_current_stage", currentStageIndex);
+
+  for (let i = 0; i < STAGES.length; i++) {
+    const btn = document.getElementById(`tab-${i}`);
+    if (btn) {
+      if (i === stageIdx) btn.classList.add("active");
+      else btn.classList.remove("active");
     }
-  } catch (e) {
-    baseQuestions = defaultDungeonData;
   }
 
+  const stageObj = STAGES[stageIdx];
+  document.getElementById("stage-badge-text").textContent = `🗝️ ${stageObj.title}`;
+  document.getElementById("sub-title").textContent = `〜 ${stageObj.title} 〜`;
+
+  const keyPrefix = `t_labyrinth_st${stageIdx}_`;
+  let stageData = stageObj.questions;
   try {
-    const savedIdx = localStorage.getItem("t_labyrinth_idx");
-    const savedCorrect = localStorage.getItem("t_labyrinth_correct");
-    const savedWrongs = localStorage.getItem("t_labyrinth_wrongs");
-    const savedReview = localStorage.getItem("t_labyrinth_review");
+    const customData = localStorage.getItem(`${keyPrefix}data`);
+    if (customData) {
+      const parsed = JSON.parse(customData);
+      if (Array.isArray(parsed) && parsed.length > 0) stageData = parsed;
+    }
+  } catch(e) {}
 
-    isReviewMode = (savedReview === "true");
-    wrongList = savedWrongs ? JSON.parse(savedWrongs) : [];
-    currentQuestions = isReviewMode ? [...wrongList] : [...baseQuestions];
-    correctCount = savedCorrect ? parseInt(savedCorrect, 10) : 0;
-    currentIndex = savedIdx ? parseInt(savedIdx, 10) : 0;
-  } catch (e) {
-    currentQuestions = [...baseQuestions];
-    currentIndex = 0;
-  }
-
-  if (!currentQuestions || currentQuestions.length === 0 || currentIndex >= currentQuestions.length || currentIndex < 0) {
-    currentIndex = 0;
-    currentQuestions = [...baseQuestions];
-    isReviewMode = false;
-  }
+  currentQuestions = [...stageData];
+  currentIndex = 0;
+  correctCount = 0;
+  wrongList = [];
+  isReviewMode = false;
+  answeredSet.clear();
 
   document.getElementById("quiz-area").style.display = "block";
   document.getElementById("clear-area").style.display = "none";
-  loadQuestion(currentIndex);
+  loadQuestion(0);
 }
 
 function createRowHTML(account = "", amount = "") {
@@ -574,13 +822,6 @@ function loadQuestion(index) {
   if (index < 0 || index >= currentQuestions.length) index = 0;
   currentIndex = index;
 
-  try {
-    localStorage.setItem("t_labyrinth_idx", currentIndex);
-    localStorage.setItem("t_labyrinth_correct", correctCount);
-    localStorage.setItem("t_labyrinth_wrongs", JSON.stringify(wrongList));
-    localStorage.setItem("t_labyrinth_review", isReviewMode);
-  } catch(e) {}
-
   const tag = document.getElementById("status-tag");
   if (isReviewMode) {
     tag.textContent = "🔄 再封印中";
@@ -590,7 +831,8 @@ function loadQuestion(index) {
     tag.className = "status-badge";
   }
 
-  const prefix = isReviewMode ? "🔄 再封印" : "🗝️ 迷宮試練";
+  const stageLabel = (currentStageIndex === 3) ? "Lv.EX" : `Lv.${currentStageIndex + 1}`;
+  const prefix = isReviewMode ? "🔄 再封印" : stageLabel;
   document.getElementById("q-number").textContent = `${prefix} // 第 ${index + 1} 層 (全 ${currentQuestions.length} 層)`;
   document.getElementById("story-display").textContent = currentQuestions[index].story;
 
@@ -628,9 +870,6 @@ function getEntries(side) {
   return entries;
 }
 
-/* ==================================================
-   ★ ダンジョン演出：魔力火の粉・結晶の舞い上がり
-================================================== */
 function spawnMagicAura() {
   const runes = ["✨", "⚡", "💎", "🔮", "🔥", "🛡️", "📜", "⚖️"];
   const totalItems = 26;
@@ -660,9 +899,6 @@ function spawnMagicAura() {
   }
 }
 
-/* ==================================================
-   ★ トラップ発動：石壁のシェイク
-================================================== */
 function triggerTrapShake() {
   const container = document.getElementById("mainContainer");
   container.classList.remove("shake-animation");
@@ -714,11 +950,6 @@ function checkAnswer() {
       answeredSet.add(currentIndex);
     }
   }
-
-  try {
-    localStorage.setItem("t_labyrinth_correct", correctCount);
-    localStorage.setItem("t_labyrinth_wrongs", JSON.stringify(wrongList));
-  } catch(e) {}
 }
 
 function prevQuestion() { if (currentIndex > 0) loadQuestion(currentIndex - 1); }
@@ -742,8 +973,8 @@ function showClearScreen() {
 
   if (wrongList.length === 0) {
     spawnMagicAura();
-    badgeArea.innerHTML = `<div class="badge-complete">🏆 迷宮制覇：大賢者の称号授与</div>`;
-    scoreText.innerHTML = `すべての天秤を完璧に調和させました！決算整理の奥義を極めし者よ、讃えよ！ (${total}/${total} 層 踏破)`;
+    badgeArea.innerHTML = `<div class="badge-complete">🏆 階層制覇：大賢者の称号授与</div>`;
+    scoreText.innerHTML = `すべての天秤を完璧に調和させました！見事な理解度です！ (${total}/${total} 層 踏破)`;
   } else {
     scoreText.innerHTML = `${total}層中、<strong>${correctCount}層</strong>の均衡に成功しました。<br>まだ迷宮の歪み（未解決の試練）が <strong>${wrongList.length}箇所</strong> 残っています。`;
     const btn = document.createElement("button");
@@ -763,16 +994,12 @@ function showClearScreen() {
   }
 }
 
-function startFreshQuiz() {
-  forceReset();
+function startFreshStage() {
+  loadStage(currentStageIndex);
 }
 
 function forceReset() {
-  localStorage.removeItem("t_labyrinth_custom_data");
-  localStorage.removeItem("t_labyrinth_idx");
-  localStorage.removeItem("t_labyrinth_correct");
-  localStorage.removeItem("t_labyrinth_wrongs");
-  localStorage.removeItem("t_labyrinth_review");
+  localStorage.clear();
   location.reload();
 }
 
@@ -786,24 +1013,11 @@ function loadCustomData() {
     const data = JSON.parse(input);
     if (!Array.isArray(data) || data.length === 0) throw new Error();
 
-    baseQuestions = data;
-    localStorage.setItem("t_labyrinth_custom_data", JSON.stringify(data));
-    localStorage.removeItem("t_labyrinth_idx");
-    localStorage.removeItem("t_labyrinth_correct");
-    localStorage.removeItem("t_labyrinth_wrongs");
-    localStorage.removeItem("t_labyrinth_review");
-
-    currentQuestions = [...baseQuestions];
-    currentIndex = 0;
-    correctCount = 0;
-    wrongList = [];
-    isReviewMode = false;
-    answeredSet.clear();
-
-    document.getElementById("quiz-area").style.display = "block";
-    document.getElementById("clear-area").style.display = "none";
-    loadQuestion(0);
-    alert(`迷宮の構造が書き換わりました（全${baseQuestions.length}層）！`);
+    STAGES[currentStageIndex].questions = data;
+    localStorage.setItem(`t_labyrinth_st${currentStageIndex}_data`, JSON.stringify(data));
+    loadStage(currentStageIndex);
+    const stageLabel = (currentStageIndex === 3) ? "Lv.EX" : `Lv.${currentStageIndex + 1}`;
+    alert(`選択中の階層（${stageLabel}）に新しい石碑問題（全${data.length}層）を刻み込みました！`);
   } catch (e) {
     alert("⚠️ 古文書の記述（JSON構文）に誤りがあります。正しくコピーできているか確認してください。");
   }
@@ -813,4 +1027,3 @@ window.addEventListener("DOMContentLoaded", init);
 </script>
 </body>
 </html>
-
